@@ -23,7 +23,6 @@ a widget is a basic building block for constructing user interfaces.
 A widget is an immutable object used to build UI, which can be a simple text or a complex nested layout.
 The entire UI in Flutter is composed of widgets.
 
-widget 是 immutable object，這表示一旦一個 widget 被創建，它的屬性就不能再被修改。這樣做可以讓界面的渲染更有效率，因為框架只需要比較新的 widget tree 和之前的 tree 之間的差異，然後僅更新變更的部分。此外，使用 immutable object 可以使程式碼更可預測和更容易理解。
 因此要改變 widget 的外觀或行為，必須創建一個新的 widget，並將其替換原來的 widget。
 這通常是通過創建一個具有所需更改的屬性的新 widget 實例並將其傳遞給框架來完成的。
 這個過程被稱為重建 widget tree，這是 Flutter 實現高性能和流暢動畫的關鍵。
@@ -49,3 +48,5 @@ ChangeNotifier 包含 notifyListeners() 方法，當狀態改變時，該方法�
 通常使用 Provider 庫來實現。使用了 ChangeNotifier 和 InheritedWidget 技術來實現狀態共享和管理。使用 Provider 庫，你可以將一個 ChangeNotifier 作為狀態管理的核心，然後通過 Provider.of(context) 方法來獲取它，並且當狀態改變時，使用它的 widget 會自動進行重建。
 
 總之，ChangeNotifier 是 Flutter 中實現簡單狀態管理的一種方式，它與 Provider 庫一起使用，可以輕鬆地管理 widget 的狀態並實現重建。
+
+###

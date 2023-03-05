@@ -32,6 +32,11 @@ class MyApp extends StatelessWidget {
 class MyAppState extends ChangeNotifier {
   //WordPair provides several helpful getters, such as asPascalCase or asSnakeCase.
   var current = WordPair.random();
+
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatelessWidget {
@@ -45,12 +50,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Text('A random AWESOME GOOOOD idea:'), // ← Example change.
+          Text('A random AWESOME GOOOOD idea:'),
           Text(appState.current.asLowerCase),
-
           ElevatedButton(
             onPressed: () {
               print('button pressed!');
+              appState.getNext();
             },
             child: Text('Next'),
           ),

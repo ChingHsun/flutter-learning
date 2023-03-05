@@ -45,13 +45,14 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // `MyHomePage` tracks changes to the app's current state using the watch method.
     var appState = context.watch<MyAppState>();
+    var pair = appState.current;
 
     //Every build method must return a widget or a nested tree of widgets.
     return Scaffold(
       body: Column(
         children: [
           Text('A random AWESOME GOOOOD idea:'),
-          Text(appState.current.asLowerCase),
+          Text(pair.asLowerCase),
           ElevatedButton(
             onPressed: () {
               print('button pressed!');

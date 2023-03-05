@@ -27,15 +27,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// The state is created and provided to the whole app using a ChangeNotifierProvider.
+//This allows any widget in the app to get hold of the state.
 class MyAppState extends ChangeNotifier {
+  //WordPair provides several helpful getters, such as asPascalCase or asSnakeCase.
   var current = WordPair.random();
 }
 
 class MyHomePage extends StatelessWidget {
+  //Every widget defines a build() method that's automatically called every time the widget's circumstances change
   @override
   Widget build(BuildContext context) {
+    // `MyHomePage` tracks changes to the app's current state using the watch method.
     var appState = context.watch<MyAppState>();
 
+    //Every build method must return a widget or a nested tree of widgets.
     return Scaffold(
       body: Column(
         children: [

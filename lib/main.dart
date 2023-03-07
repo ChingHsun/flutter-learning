@@ -80,9 +80,11 @@ class BigCard extends StatelessWidget {
     //  This way, widgets can focus on their single responsibility, to have freedom in how to compose your UI.
     //For example, you can use the Padding widget to pad text, images, buttons, your own custom widgets, or the whole app.
     // The widget doesn't care what it's wrapping.
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Text(pair.asLowerCase),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Text(pair.asLowerCase),
+      ),
     );
   }
 }

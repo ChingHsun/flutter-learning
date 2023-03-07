@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(
+              // Color.fromRGBO(0, 255, 0, 1.0),  Color(0xFF00FF00).
+              seedColor: Colors.blue),
         ),
         home: MyHomePage(),
       ),
@@ -76,14 +78,23 @@ class BigCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    //he theme's displayMedium property could theoretically be null. Dart is null-safe so use !
+    // copyWith() on displayMedium returns a copy of the text style with the changes you define. In this case, you're only changing the text's color
+    var style = theme.textTheme.displayMedium!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
+
     // flutter uses Composition over Inheritance whenever it can. Here, instead of padding being an attribute of Text, it's a widget!
     //  This way, widgets can focus on their single responsibility, to have freedom in how to compose your UI.
     //For example, you can use the Padding widget to pad text, images, buttons, your own custom widgets, or the whole app.
     // The widget doesn't care what it's wrapping.
     return Card(
+      elevation: 20,
+      color: theme.colorScheme.primary,
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Text(pair.asLowerCase),
+        child: Text(pair.asLowerCase, style: style),
       ),
     );
   }

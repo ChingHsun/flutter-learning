@@ -63,6 +63,17 @@ class _MyHomePageState extends State<MyHomePage> {
   //Every widget defines a build() method that's automatically called every time the widget's circumstances change
   @override
   Widget build(BuildContext context) {
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = GeneratorPage();
+        break;
+      case 1:
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError('no widget for $selectedIndex');
+    }
     // `MyHomePage` tracks changes to the app's current state using the watch method.
     var appState = context.watch<MyAppState>();
     var pair = appState.current;
@@ -99,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
               child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  child: GeneratorPage()))
+                  child: page))
         ],
       ),
     );

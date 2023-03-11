@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
 class MyAppState extends ChangeNotifier {
   //WordPair provides several helpful getters, such as asPascalCase or asSnakeCase.
   var current = WordPair.random();
-  var selectedIndex = 0;
 
   void getNext() {
     current = WordPair.random();
@@ -51,14 +50,16 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  void changeNavIndex(value) {
-    selectedIndex = value;
-    notifyListeners();
-  }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
   //Every widget defines a build() method that's automatically called every time the widget's circumstances change
   @override
   Widget build(BuildContext context) {
@@ -87,9 +88,11 @@ class MyHomePage extends StatelessWidget {
                 NavigationRailDestination(
                     icon: Icon(Icons.favorite), label: Text('Favorites'))
               ],
-              selectedIndex: appState.selectedIndex,
+              selectedIndex: selectedIndex,
               onDestinationSelected: (value) {
-                appState.changeNavIndex(value);
+                setState(() {
+                  selectedIndex = value;
+                });
               },
             ),
           ),

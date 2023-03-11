@@ -76,16 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
-    // `MyHomePage` tracks changes to the app's current state using the watch method.
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
 
     //Every build method must return a widget or a nested tree of widgets.
     return LayoutBuilder(builder: (context, constraints) {

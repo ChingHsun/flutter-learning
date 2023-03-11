@@ -49,4 +49,6 @@ ChangeNotifier 包含 notifyListeners() 方法，當狀態改變時，該方法�
 
 總之，ChangeNotifier 是 Flutter 中實現簡單狀態管理的一種方式，它與 Provider 庫一起使用，可以輕鬆地管理 widget 的狀態並實現重建。
 
-###
+### WordPair
+
+WordPair 是一個結構化的資料型別, 應用時機通常是在需要產生一些隨機的、容易記憶的、有意義的名稱時，例如在產生隨機用戶名、產品名稱、專案名稱等場景下

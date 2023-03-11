@@ -51,18 +51,23 @@ class MyHomePage extends StatelessWidget {
 
     //Every build method must return a widget or a nested tree of widgets.
     return Scaffold(
-      body: Column(
-        children: [
-          Text('A random AWESOME GOOOOD idea:'),
-          BigCard(pair: pair),
-          ElevatedButton(
-            onPressed: () {
-              print('button pressed!');
-              appState.getNext();
-            },
-            child: Text('Next'),
-          ),
-        ],
+      // 水平 center
+      body: Center(
+        child: Column(
+          //垂直 center
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BigCard(pair: pair),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                print('button pressed!');
+                appState.getNext();
+              },
+              child: Text('Next'),
+            ),
+          ],
+        ),
       ),
     );
   }
